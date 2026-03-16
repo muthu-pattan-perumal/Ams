@@ -27,7 +27,8 @@ const useAuthStore = create((set) => ({
             const { token, user } = res.data;
             
             if (!token || !user) {
-                throw new Error('Invalid server response: Missing token or user data');
+                console.error('Server response was OK but missing expected data:', res.data);
+                throw new Error('API Error: Server returned an empty response. Please check if VITE_API_URL is correct.');
             }
 
             console.log('Login successful, storing user data...');
@@ -62,10 +63,14 @@ const useAuthStore = create((set) => ({
                 console.log('Auth check successful');
                 set({ user: res.data.user, isAuthenticated: true });
             } else {
-                throw new Error('No user data in /me response');
+                console.error('Auth check returned invalid data:', res.data);
+                throw new Error('Missing user data in session validation');
             }
         } catch (err) {
             console.error('Auth check failed:', err);
+            // Only logout if it's a 401/403 (expired token)
+            // If it's a network error (500/404), maybe keep the data and retry? 
+            // For now, keep existing behavior but log it.
             localStorage.removeItem('token');
             localStorage.removeItem('user');
             set({ user: null, token: null, isAuthenticated: false });
