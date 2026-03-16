@@ -39,7 +39,18 @@ const AdminLayout = () => {
         { name: 'Payments', path: '/payments', icon: 'mdi-cash' },
     ];
 
-    const filteredNavItems = navItems.filter(item => !item.adminOnly || user.role === 'Admin');
+    const filteredNavItems = navItems.filter(item => !item.adminOnly || user?.role === 'Admin');
+
+    if (!user) {
+        return (
+            <div className="min-h-screen flex items-center justify-center bg-surface-secondary">
+                <div className="flex flex-col items-center gap-4">
+                    <div className="w-12 h-12 border-4 border-primary-9 border-t-transparent rounded-full animate-spin"></div>
+                    <p className="text-slate-500 font-medium">Loading session...</p>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className="min-h-screen flex text-slate-800 bg-surface-secondary pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)]">

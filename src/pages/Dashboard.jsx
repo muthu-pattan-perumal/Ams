@@ -65,7 +65,7 @@ const Dashboard = () => {
     return (
         <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
             <div className="mb-6 lg:mb-10">
-                <h1 className="text-2xl lg:text-4xl font-black tracking-tight text-slate-900">Welcome back, {user?.name.split(' ')[0]}! 👋</h1>
+                <h1 className="text-2xl lg:text-4xl font-black tracking-tight text-slate-900 truncate">Welcome back, {user?.name?.split(' ')[0] || 'User'}! 👋</h1>
                 <p className="text-slate-500 mt-1 lg:mt-2 lg:text-lg">Here's what's happening with your business today.</p>
             </div>
 
