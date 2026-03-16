@@ -1,0 +1,74 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  phone     String
+  password  String
+  role      String   // Admin, Customer, Supplier
+  createdAt DateTime @default(now())
+}
+
+model Customer {
+  id             String   @id @default(uuid())
+  name           String
+  phone          String
+  address        String
+  email          String?  @unique
+  openingBalance Float
+  balance        Float    @default(0)
+  createdAt      DateTime @default(now())
+}
+
+model Supplier {
+  id             String   @id @default(uuid())
+  name           String
+  phone          String
+  address        String
+  email          String?  @unique
+  openingBalance Float
+  balance        Float    @default(0)
+  createdAt      DateTime @default(now())
+}
+
+model Transaction {
+  id         String   @id @default(uuid())
+  type       String   // Receive, Pay
+  amount     Float
+  notes      String?
+  date       DateTime
+  userId     String
+  entityType String   @default("Customer") // Customer or Supplier
+  fileId     String?
+  createdAt  DateTime @default(now())
+}
+
+
+model UploadedFile {
+  id        String   @id @default(uuid())
+  fileName  String
+  mimeType  String
+  size      Int
+  base64    String   @db.Text
+  createdAt DateTime @default(now())
+}
+
+model Payment {
+  id          String   @id @default(uuid())
+  userId      String
+  entityType  String   @default("Customer") // Customer or Supplier
+  amount      Float
+  date        DateTime
+  paymentMode String
+  fileId      String?
+  createdAt   DateTime @default(now())
+}
+
