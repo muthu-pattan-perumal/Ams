@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Layout from './layouts/AdminLayout';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
@@ -15,7 +15,7 @@ const ProtectedRoute = ({ children, role }) => {
   const { isAuthenticated, user } = useAuthStore();
 
   if (!isAuthenticated) return <Navigate to="/login" />;
-  if (role && user.role !== role && user.role !== 'Admin') return <Navigate to="/" />;
+  if (role && user?.role !== role && user?.role !== 'Admin') return <Navigate to="/" />;
 
   return children;
 };

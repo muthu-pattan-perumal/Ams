@@ -10,15 +10,19 @@
     "build": "npx prisma generate && vite build",
     "preview": "vite preview",
     "start": "node server/server.js",
-    "render-build": "npm install && npx prisma generate"
+    "render-build": "npm install && npx prisma generate",
+    "mobile:build": "npm run build && npx cap sync android",
+    "mobile:open": "npx cap open android"
   },
   "prisma": {
     "schema": "server/prisma/schema.prisma"
   },
   "dependencies": {
+    "@capacitor/android": "^8.2.0",
+    "@capacitor/cli": "^8.2.0",
+    "@capacitor/core": "^8.2.0",
     "@mdi/font": "^7.4.47",
     "@prisma/client": "^6.4.1",
-    "prisma": "^6.4.1",
     "axios": "^1.13.6",
     "bcryptjs": "^3.0.3",
     "cors": "^2.8.6",
@@ -27,6 +31,7 @@
     "jsonwebtoken": "^9.0.3",
     "lucide-react": "^0.577.0",
     "multer": "^2.1.1",
+    "prisma": "^6.4.1",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-router-dom": "^7.13.1",

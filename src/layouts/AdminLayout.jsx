@@ -42,7 +42,7 @@ const AdminLayout = () => {
     const filteredNavItems = navItems.filter(item => !item.adminOnly || user.role === 'Admin');
 
     return (
-        <div className="min-h-screen flex text-slate-800 bg-surface-secondary">
+        <div className="min-h-screen flex text-slate-800 bg-surface-secondary pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)]">
             {/* Sidebar Overlay for Mobile */}
             {isMobile && isSidebarOpen && (
                 <div
@@ -93,7 +93,7 @@ const AdminLayout = () => {
             {/* Main Content Area */}
             <div className={`flex-1 flex flex-col min-w-0 transition-all duration-300 ${isSidebarOpen ? 'lg:ml-64' : 'lg:ml-20'}`}>
                 {/* Topbar */}
-                <header className="h-16 lg:h-20 bg-white/80 backdrop-blur-md border-b border-slate-200 flex items-center justify-between px-4 lg:px-8 sticky top-0 z-20">
+                <header className="h-16 lg:h-20 bg-white/80 backdrop-blur-md border-b border-slate-200 flex items-center justify-between px-4 lg:px-8 sticky top-0 z-20 pt-[env(safe-area-inset-top)] lg:pt-0">
                     <button
                         onClick={() => setSidebarOpen(!isSidebarOpen)}
                         className="p-2 hover:bg-slate-100 rounded-lg transition-all text-slate-600"
