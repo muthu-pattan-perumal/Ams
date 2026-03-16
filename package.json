@@ -10,7 +10,7 @@
     "build": "npx prisma generate && vite build",
     "preview": "vite preview",
     "start": "node server/server.js",
-    "render-build": "npm install && npx prisma generate"
+    "render-build": "npm install --omit=dev && npm install prisma @prisma/client && npx prisma generate"
   },
   "dependencies": {
     "@mdi/font": "^7.4.47",
