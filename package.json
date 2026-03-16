@@ -7,10 +7,10 @@
     "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
     "dev:server": "nodemon server/server.js",
     "dev:client": "vite",
-    "build": "npx prisma generate && vite build",
+    "build": "npx prisma generate --schema=server/prisma/schema.prisma && vite build",
     "preview": "vite preview",
     "start": "node server/server.js",
-    "render-build": "npm install --omit=dev && npm install prisma @prisma/client && npx prisma generate"
+    "render-build": "npm install --omit=dev && npm install prisma @prisma/client && npx prisma generate --schema=server/prisma/schema.prisma"
   },
   "dependencies": {
     "@mdi/font": "^7.4.47",
