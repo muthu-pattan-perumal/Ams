@@ -1,5 +1,8 @@
 {
   "appId": "com.ams.app",
   "appName": "Ams",
-  "webDir": "dist"
+  "webDir": "dist",
+  "server": {
+    "allowNavigation": ["*"]
+  }
 }

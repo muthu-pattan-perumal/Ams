@@ -78,6 +78,13 @@ const Login = () => {
 
                 <div className="mt-8 text-center text-sm text-slate-500">
                     <p>© 2026 AMS System V1.0</p>
+                    <button 
+                        type="button"
+                        onClick={() => alert(`API Base URL: ${import.meta.env.VITE_API_URL || '/api'}`)}
+                        className="mt-4 text-[10px] text-slate-400 hover:text-primary-9 underline underline-offset-2"
+                    >
+                        Show Debug Info
+                    </button>
                 </div>
             </div>
         </div>
