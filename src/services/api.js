@@ -1,4 +1,5 @@
 import axios from 'axios';
+import useLoadingStore from '../store/loadingStore';
 
 const api = axios.create({
     baseURL: import.meta.env.VITE_API_URL || '/api',
@@ -8,6 +9,7 @@ const api = axios.create({
 console.log('API Base URL:', api.defaults.baseURL);
 
 api.interceptors.request.use((config) => {
+    useLoadingStore.getState().startLoading();
     const token = localStorage.getItem('token');
     console.log(`Making request to: ${config.url} (Full URL: ${config.baseURL}${config.url})`);
     if (token) {
@@ -15,11 +17,16 @@ api.interceptors.request.use((config) => {
     }
     return config;
 }, (error) => {
+    useLoadingStore.getState().stopLoading();
     console.error('Request error:', error);
     return Promise.reject(error);
 });
 
-api.interceptors.response.use((response) => response, (error) => {
+api.interceptors.response.use((response) => {
+    useLoadingStore.getState().stopLoading();
+    return response;
+}, (error) => {
+    useLoadingStore.getState().stopLoading();
     const errorDetails = {
         message: error.message,
         code: error.code,

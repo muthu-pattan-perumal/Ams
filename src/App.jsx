@@ -20,6 +20,8 @@ const ProtectedRoute = ({ children, role }) => {
   return children;
 };
 
+import LoadingOverlay from './components/LoadingOverlay';
+
 function App() {
   const { checkAuth } = useAuthStore();
 
@@ -29,6 +31,7 @@ function App() {
 
   return (
     <Router>
+      <LoadingOverlay />
       <Routes>
         <Route path="/login" element={<Login />} />
 
