@@ -38,14 +38,20 @@ const Login = () => {
 
                 <form onSubmit={handleSubmit} className="space-y-6">
                     <div>
-                        <label className="block text-sm font-medium text-slate-700 mb-2">Email Address</label>
+                        <label className="block text-sm font-medium text-slate-700 mb-2">
+                            Email Address
+                        </label>
+
                         <div className="relative">
-                            <i className="mdi mdi-email absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                            <span className="absolute inset-y-0 left-0 flex items-center pl-3">
+                                <i className="mdi mdi-email text-slate-400 text-lg"></i>
+                            </span>
+
                             <input
                                 type="email"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                className="input-field pl-11"
+                                className="w-full h-11 pl-10 pr-3 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 placeholder="admin@example.com"
                                 required
                             />
@@ -53,14 +59,20 @@ const Login = () => {
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-slate-700 mb-2">Password</label>
+                        <label className="block text-sm font-medium text-slate-700 mb-2">
+                            Password
+                        </label>
+
                         <div className="relative">
-                            <i className="mdi mdi-lock absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                            <span className="absolute inset-y-0 left-0 flex items-center pl-3">
+                                <i className="mdi mdi-lock text-slate-400 text-lg"></i>
+                            </span>
+
                             <input
                                 type="password"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
-                                className="input-field pl-11"
+                                className="w-full h-11 pl-10 pr-3 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 placeholder="••••••••"
                                 required
                             />
@@ -78,7 +90,7 @@ const Login = () => {
 
                 <div className="mt-8 text-center text-sm text-slate-500">
                     <p>© 2026 AMS System V1.0</p>
-                    <button 
+                    <button
                         type="button"
                         onClick={() => alert(`API Base URL: ${import.meta.env.VITE_API_URL || '/api'}`)}
                         className="mt-4 text-[10px] text-slate-400 hover:text-primary-9 underline underline-offset-2"
