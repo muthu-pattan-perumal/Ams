@@ -52,7 +52,7 @@ const Login = () => {
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 className="w-full h-11 pl-10 pr-3 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                placeholder="admin@example.com"
+                                placeholder="admin@ams.com"
                                 required
                             />
                         </div>
@@ -73,7 +73,7 @@ const Login = () => {
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                                 className="w-full h-11 pl-10 pr-3 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                placeholder="••••••••"
+                                placeholder="password123"
                                 required
                             />
                         </div>
