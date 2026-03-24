@@ -6,6 +6,7 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const { login, error, loading } = useAuthStore();
+    const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
@@ -64,18 +65,31 @@ const Login = () => {
                         </label>
 
                         <div className="relative">
+                            {/* 🔒 Left Icon */}
                             <span className="absolute inset-y-0 left-0 flex items-center pl-3">
                                 <i className="mdi mdi-lock text-slate-400 text-lg"></i>
                             </span>
 
+                            {/* 🔑 Input */}
                             <input
-                                type="password"
+                                type={showPassword ? "text" : "password"}
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
-                                className="w-full h-11 pl-10 pr-3 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                className="w-full h-11 pl-10 pr-10 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 placeholder="password123"
                                 required
                             />
+
+                            {/* 👁️ Eye Icon */}
+                            <span
+                                onClick={() => setShowPassword((prev) => !prev)}
+                                className="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer"
+                            >
+                                <i
+                                    className={`mdi ${showPassword ? "mdi-eye-off" : "mdi-eye"
+                                        } text-slate-500 text-lg`}
+                                ></i>
+                            </span>
                         </div>
                     </div>
 
